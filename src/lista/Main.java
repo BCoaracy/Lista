@@ -23,8 +23,7 @@ public class Main  {
         //teste retirar();
         System.out.println("Itens retirados");
         for(int i=0;i<lista.lista.length;i++){
-            lista.retirar(i);
-            System.out.println(i);
+            System.out.println(lista.retirar(0));
         }
         lista.estaVazia();
         
@@ -36,13 +35,13 @@ public class Main  {
         System.out.println("Tamanho da lista: " + lista.obterTamanho());
         
         //obter elemento;
-        for(int i =0;i<=lista.obterTamanho();i++){
+        for(int i =0;i<lista.obterTamanho();i++){
             System.out.println(lista.obterElemento(i));
         }
         System.out.println("");
         lista.inserir(2, "Teste");
         
-        for(int i =0;i<=lista.obterTamanho();i++){
+        for(int i =0;i<lista.obterTamanho();i++){
             System.out.println(lista.obterElemento(i));
         }
         

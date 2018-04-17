@@ -2,24 +2,25 @@ package lista;
 
 public class Lista {
 
-    private int posicao = 0;
-    private int ultimo = 0;
+    private int posicao = -1;
+    private int ultimo = 5;
     public Object[] lista = new Object[5];
+   
     
     public Lista(){
         
     }
     
-    public Lista(int tamanho){
-        this.posicao = 0;
-        this.ultimo = 0;
-        this.lista = new Object[tamanho];
+    public Lista(int max){
+        this.posicao = -1;
+        this.ultimo = max;
+        this.lista = new Object[max];
     }
     
     //TAD Lista
     
     public boolean estaCheia(){
-        if(posicao==ultimo){
+        if(this.obterTamanho()==this.ultimo){
             return true;
         }
         return false;
@@ -38,13 +39,14 @@ public class Lista {
                 Object aux = new Object();
                 aux = lista[posicao];
                 lista[posicao]=obj;
-                for(int i = (posicao+1); i<=lista.length;i++){
+                for(int i = (posicao+1); i<ultimo;i++){
                     lista[i]=aux;
-                    if(i!=lista.length)
+                    if(i!=ultimo)
                         aux=lista[i+1];
                 }
             }
         }
+        this.posicao++;
     }
     
     
@@ -56,32 +58,20 @@ public class Lista {
             Object elemento = new Object();
             Object aux = new Object();
             elemento = this.lista[posicao];
-            for(int i = (posicao+1);i>=this.lista.length;i++){
+            for(int i = (posicao+1);i<this.ultimo;i++){
                 this.lista[i-1]=this.lista[i];
             }
+            this.posicao--;
+            this.ultimo--;
             return elemento;
         }
     }
     
     public Object obterElemento(int posicao){
-        if(this.estaVazia()){
-            System.out.println("A lista está vazia");
-            return null;
-        }else{
             return this.lista[posicao];
-        }
     }
     
-    public int obterTamanho(){
-        int tamanho = 0;
-        if(this.estaVazia()){
-            return tamanho;
-        }else
-        {
-            while(this.obterElemento(tamanho).equals(null)){
-                tamanho++;
-            }
-        }
-        return tamanho;
+    public int obterTamanho(){           
+        return this.posicao+1;
     }   
 }
